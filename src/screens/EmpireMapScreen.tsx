@@ -2,10 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text} from 'react-native';
 import {MapStageCard} from '../components/contentCards';
 import {EmpireMapView, TimelineSlider} from '../components/map';
-import {PremiumCard, SectionHeader, contentBottomPadding} from '../components/layout';
+import {
+  PremiumCard,
+  SectionHeader,
+  contentBottomPadding,
+  screenHorizontalPadding,
+  screenTopPadding,
+} from '../components/layout';
 import {mapStages} from '../data/mapStages';
 import {localStore} from '../storage/localStore';
 import {colors} from '../theme/colors';
+import {isTinyScreen, metric} from '../theme/metrics';
 
 export const EmpireMapScreen = () => {
   const [stageIndex, setStageIndex] = useState(0);
@@ -49,17 +56,17 @@ export const EmpireMapScreen = () => {
 
 const styles = StyleSheet.create({
   content: {
-    paddingHorizontal: 18,
-    paddingTop: 18,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: screenTopPadding,
     paddingBottom: contentBottomPadding,
   },
   timelineCard: {
-    padding: 14,
-    marginBottom: 16,
+    padding: metric.cardPadding,
+    marginBottom: isTinyScreen ? 12 : 16,
   },
   timelineTitle: {
     color: colors.primaryText,
-    fontSize: 16,
+    fontSize: metric.bodyFont,
     fontWeight: '900',
     marginBottom: 6,
   },

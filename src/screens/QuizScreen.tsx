@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {QuizIntroView, QuizQuestionCard, QuizResultView} from '../components/quiz';
-import {SectionHeader, contentBottomPadding} from '../components/layout';
+import {
+  SectionHeader,
+  contentBottomPadding,
+  screenHorizontalPadding,
+  screenTopPadding,
+} from '../components/layout';
 import {quizQuestionById, quizQuestions} from '../data/quizQuestions';
 import {localStore} from '../storage/localStore';
 import type {QuizQuestion, QuizResult, QuizSession} from '../types/content';
@@ -169,8 +174,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingHorizontal: 18,
-    paddingTop: 18,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: screenTopPadding,
     paddingBottom: contentBottomPadding,
   },
 });

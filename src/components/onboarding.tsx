@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import {colors} from '../theme/colors';
+import {isSmallScreen, isTinyScreen} from '../theme/metrics';
 
 type PageIndicatorProps = {
   total: number;
@@ -65,7 +66,11 @@ export const OnboardingPageView = ({
       <Pressable
         onPress={onNext}
         style={({pressed}) => [styles.nextButton, pressed && styles.pressed]}>
-        <Text style={styles.nextText}>
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit
+          minimumFontScale={0.78}
+          style={styles.nextText}>
           {index === total - 1 ? 'Begin Your Journey' : 'Next'}
         </Text>
         <Text style={styles.nextArrow}>›</Text>
@@ -85,7 +90,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    height: 130,
+    height: isTinyScreen ? 78 : isSmallScreen ? 96 : 130,
     backgroundColor: 'rgba(11, 4, 20, 0.05)',
   },
   bottomShade: {
@@ -93,36 +98,36 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: 330,
+    height: isTinyScreen ? 246 : isSmallScreen ? 280 : 330,
     backgroundColor: 'rgba(8, 3, 14, 0.34)',
   },
   skipButton: {
     position: 'absolute',
-    right: 22,
-    top: 56,
-    minHeight: 36,
-    paddingHorizontal: 14,
+    right: isTinyScreen ? 14 : 22,
+    top: isTinyScreen ? 38 : isSmallScreen ? 46 : 56,
+    minHeight: isTinyScreen ? 32 : 36,
+    paddingHorizontal: isTinyScreen ? 11 : 14,
     borderRadius: 999,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(14, 4, 29, 0.24)',
+    backgroundColor: 'rgba(255, 255, 255, 0.16)',
     borderWidth: 1,
-    borderColor: 'rgba(242, 207, 115, 0.36)',
+    borderColor: 'rgba(242, 207, 115, 0.58)',
   },
   skipText: {
-    color: colors.card,
-    fontSize: 13,
+    color: '#FFFFFF',
+    fontSize: isTinyScreen ? 11 : 13,
     fontWeight: '800',
   },
   content: {
-    paddingHorizontal: 34,
-    paddingBottom: 80,
+    paddingHorizontal: isTinyScreen ? 22 : isSmallScreen ? 26 : 34,
+    paddingBottom: isTinyScreen ? 42 : isSmallScreen ? 56 : 80,
     alignItems: 'center',
   },
   title: {
-    color: colors.card,
-    fontSize: 21,
-    lineHeight: 27,
+    color: '#FFFFFF',
+    fontSize: isTinyScreen ? 18 : isSmallScreen ? 19 : 21,
+    lineHeight: isTinyScreen ? 23 : isSmallScreen ? 24 : 27,
     fontWeight: '900',
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.82)',
@@ -130,28 +135,28 @@ const styles = StyleSheet.create({
     textShadowRadius: 8,
   },
   goldDivider: {
-    marginTop: 14,
+    marginTop: isTinyScreen ? 9 : 14,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
   },
   goldLine: {
-    width: 92,
+    width: isTinyScreen ? 62 : isSmallScreen ? 76 : 92,
     height: 1,
     backgroundColor: 'rgba(214, 162, 58, 0.76)',
   },
   goldDiamond: {
-    width: 10,
-    height: 10,
+    width: isTinyScreen ? 8 : 10,
+    height: isTinyScreen ? 8 : 10,
     borderWidth: 2,
     borderColor: colors.primaryGold,
     transform: [{rotate: '45deg'}],
   },
   subtitle: {
-    marginTop: 20,
+    marginTop: isTinyScreen ? 12 : isSmallScreen ? 15 : 20,
     color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: isTinyScreen ? 13 : isSmallScreen ? 14 : 16,
+    lineHeight: isTinyScreen ? 18 : isSmallScreen ? 20 : 22,
     fontStyle: 'italic',
     fontWeight: '700',
     textAlign: 'center',
@@ -160,15 +165,15 @@ const styles = StyleSheet.create({
     textShadowRadius: 8,
   },
   indicatorRow: {
-    marginTop: 30,
+    marginTop: isTinyScreen ? 18 : isSmallScreen ? 22 : 30,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: isTinyScreen ? 9 : 12,
   },
   indicatorDot: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
+    width: isTinyScreen ? 11 : 14,
+    height: isTinyScreen ? 11 : 14,
+    borderRadius: isTinyScreen ? 6 : 7,
     backgroundColor: 'rgba(15, 8, 25, 0.7)',
     borderWidth: 1,
     borderColor: colors.primaryGold,
@@ -178,8 +183,8 @@ const styles = StyleSheet.create({
     borderColor: colors.softGold,
   },
   nextButton: {
-    marginTop: 30,
-    minHeight: 58,
+    marginTop: isTinyScreen ? 18 : isSmallScreen ? 22 : 30,
+    minHeight: isTinyScreen ? 48 : isSmallScreen ? 52 : 58,
     alignSelf: 'stretch',
     borderRadius: 29,
     borderWidth: 1.5,
@@ -200,15 +205,15 @@ const styles = StyleSheet.create({
   },
   nextText: {
     color: colors.card,
-    fontSize: 18,
+    fontSize: isTinyScreen ? 15 : isSmallScreen ? 16 : 18,
     fontWeight: '900',
   },
   nextArrow: {
     position: 'absolute',
-    right: 25,
+    right: isTinyScreen ? 18 : 25,
     color: colors.softGold,
-    fontSize: 30,
-    lineHeight: 34,
+    fontSize: isTinyScreen ? 24 : 30,
+    lineHeight: isTinyScreen ? 28 : 34,
     fontWeight: '900',
   },
 });

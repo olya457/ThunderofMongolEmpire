@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {images} from '../assets';
 import {colors} from '../theme/colors';
+import {metric} from '../theme/metrics';
 
 type ChildrenProps = {
   children: React.ReactNode;
@@ -123,8 +124,11 @@ export const ConfirmationToast = ({message}: ToastProps) => {
   );
 };
 
-export const contentBottomPadding = Platform.OS === 'ios' ? 116 : 136;
-export const floatingNavBottom = Platform.OS === 'ios' ? 20 : 30;
+export const screenHorizontalPadding = metric.horizontalPadding;
+export const screenTopPadding = metric.screenTopPadding;
+export const detailTopPadding = metric.detailTopPadding;
+export const contentBottomPadding = metric.contentBottomPadding;
+export const floatingNavBottom = metric.floatingNavBottom;
 
 const styles = StyleSheet.create({
   gradientRoot: {
@@ -264,19 +268,19 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: '#F8F4FF',
-    fontSize: 32,
+    fontSize: metric.sectionTitleFont,
     fontWeight: '800',
-    lineHeight: 38,
+    lineHeight: metric.sectionTitleLine,
   },
   headerTitleCompact: {
-    fontSize: 25,
-    lineHeight: 31,
+    fontSize: metric.sectionTitleFont - 6,
+    lineHeight: metric.sectionTitleLine - 6,
   },
   headerSubtitle: {
-    marginTop: 8,
+    marginTop: metric.screenTopPadding <= 10 ? 5 : 8,
     color: '#D8D0E8',
-    fontSize: 15,
-    lineHeight: 22,
+    fontSize: metric.sectionSubtitleFont,
+    lineHeight: metric.sectionSubtitleLine,
   },
   badge: {
     alignSelf: 'flex-start',

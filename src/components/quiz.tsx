@@ -3,6 +3,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {images} from '../assets';
 import {articleById} from '../data/articles';
 import {colors} from '../theme/colors';
+import {isSmallScreen, isTinyScreen, metric} from '../theme/metrics';
 import type {QuizQuestion} from '../types/content';
 import {PrimaryPurpleButton, SecondaryGoldButton} from './buttons';
 import {PremiumCard, SoftBadge} from './layout';
@@ -180,31 +181,31 @@ export const QuizResultView = ({
 const styles = StyleSheet.create({
   introCard: {
     overflow: 'hidden',
-    paddingBottom: 20,
+    paddingBottom: isTinyScreen ? 14 : 20,
   },
   introImage: {
     width: '100%',
-    height: 310,
+    height: metric.quizIntroImageHeight,
     backgroundColor: '#1A1024',
   },
   introTitle: {
-    marginTop: 18,
-    paddingHorizontal: 18,
+    marginTop: isTinyScreen ? 14 : 18,
+    paddingHorizontal: metric.detailPadding,
     color: colors.primaryText,
-    fontSize: 30,
-    lineHeight: 36,
+    fontSize: isTinyScreen ? 24 : isSmallScreen ? 27 : 30,
+    lineHeight: isTinyScreen ? 30 : isSmallScreen ? 33 : 36,
     fontWeight: '900',
   },
   introSubtitle: {
     marginTop: 9,
-    paddingHorizontal: 18,
+    paddingHorizontal: metric.detailPadding,
     color: colors.secondaryText,
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: metric.bodyFont,
+    lineHeight: metric.bodyLine - 2,
   },
   introButton: {
-    marginTop: 18,
-    marginHorizontal: 18,
+    marginTop: isTinyScreen ? 14 : 18,
+    marginHorizontal: metric.detailPadding,
   },
   progressShell: {
     marginBottom: 16,
@@ -246,17 +247,17 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   questionBody: {
-    padding: 16,
+    padding: metric.cardPadding,
   },
   questionTitle: {
     color: colors.primaryText,
-    fontSize: 21,
-    lineHeight: 28,
+    fontSize: isTinyScreen ? 18 : isSmallScreen ? 19 : 21,
+    lineHeight: isTinyScreen ? 24 : isSmallScreen ? 26 : 28,
     fontWeight: '900',
   },
   options: {
-    marginTop: 16,
-    gap: 10,
+    marginTop: isTinyScreen ? 12 : 16,
+    gap: isTinyScreen ? 8 : 10,
   },
   option: {
     minHeight: 50,
@@ -276,16 +277,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(232, 92, 92, 0.12)',
   },
   nextButton: {
-    marginTop: 18,
+    marginTop: isTinyScreen ? 14 : 18,
   },
   resultCard: {
     alignItems: 'center',
-    padding: 22,
+    padding: isTinyScreen ? 16 : 22,
   },
   resultMedal: {
-    width: 78,
-    height: 78,
-    borderRadius: 39,
+    width: isTinyScreen ? 60 : 78,
+    height: isTinyScreen ? 60 : 78,
+    borderRadius: isTinyScreen ? 30 : 39,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.transparentGold,
@@ -294,32 +295,32 @@ const styles = StyleSheet.create({
   },
   resultMedalText: {
     color: colors.warmBronze,
-    fontSize: 34,
+    fontSize: isTinyScreen ? 27 : 34,
     fontWeight: '900',
   },
   resultTitle: {
-    marginTop: 16,
+    marginTop: isTinyScreen ? 12 : 16,
     color: colors.primaryText,
-    fontSize: 25,
+    fontSize: isTinyScreen ? 21 : 25,
     fontWeight: '900',
   },
   resultScore: {
-    marginTop: 10,
+    marginTop: isTinyScreen ? 6 : 10,
     color: colors.softGold,
-    fontSize: 44,
+    fontSize: isTinyScreen ? 36 : 44,
     fontWeight: '900',
   },
   resultPercent: {
     color: colors.warmBronze,
-    fontSize: 18,
+    fontSize: isTinyScreen ? 16 : 18,
     fontWeight: '900',
   },
   resultMessage: {
     marginTop: 12,
     marginBottom: 18,
     color: colors.secondaryText,
-    fontSize: 16,
-    lineHeight: 23,
+    fontSize: metric.bodyFont,
+    lineHeight: metric.bodyLine - 3,
     textAlign: 'center',
   },
   resultButton: {

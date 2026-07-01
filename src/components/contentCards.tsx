@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {images} from '../assets';
 import {colors} from '../theme/colors';
+import {isSmallScreen, isTinyScreen, metric} from '../theme/metrics';
 import type {Article, Artifact, HistoricalSite, MapStage} from '../types/content';
 import {FavoriteButton, PrimaryPurpleButton, ShareButton} from './buttons';
 import {PremiumCard, SoftBadge} from './layout';
@@ -187,26 +188,26 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(109, 60, 245, 0.08)',
   },
   cardBody: {
-    padding: 16,
+    padding: metric.cardPadding,
   },
   cardTitle: {
     color: colors.primaryText,
-    fontSize: 19,
-    lineHeight: 24,
+    fontSize: metric.cardTitleFont,
+    lineHeight: metric.cardTitleLine,
     fontWeight: '800',
   },
   cardSubtitle: {
     marginTop: 5,
     color: colors.secondaryText,
-    fontSize: 14,
-    lineHeight: 20,
+    fontSize: isTinyScreen ? 13 : 14,
+    lineHeight: isTinyScreen ? 18 : 20,
     fontWeight: '600',
   },
   cardActions: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
-    marginTop: 14,
+    gap: isTinyScreen ? 8 : 10,
+    marginTop: isTinyScreen ? 11 : 14,
   },
   readButton: {
     flex: 1,
@@ -220,7 +221,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   artifactImageWrap: {
-    minHeight: 136,
+    minHeight: isTinyScreen ? 112 : isSmallScreen ? 124 : 136,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#1D1228',
@@ -228,24 +229,24 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.divider,
   },
   artifactImageWrapGrid: {
-    width: 132,
+    width: isTinyScreen ? 112 : isSmallScreen ? 122 : 132,
     borderBottomWidth: 0,
     borderRightWidth: 1,
     borderRightColor: colors.divider,
   },
   artifactImage: {
-    width: 122,
-    height: 122,
+    width: isTinyScreen ? 98 : isSmallScreen ? 110 : 122,
+    height: isTinyScreen ? 98 : isSmallScreen ? 110 : 122,
   },
   artifactBody: {
     flex: 1,
-    padding: 15,
+    padding: metric.cardPadding,
   },
   factText: {
     marginTop: 7,
     color: colors.secondaryText,
-    fontSize: 14,
-    lineHeight: 21,
+    fontSize: isTinyScreen ? 13 : 14,
+    lineHeight: isTinyScreen ? 19 : 21,
   },
   artifactAction: {
     alignSelf: 'flex-start',
@@ -263,12 +264,12 @@ const styles = StyleSheet.create({
   coordinateText: {
     marginTop: 5,
     color: colors.warmBronze,
-    fontSize: 13,
-    lineHeight: 18,
+    fontSize: isTinyScreen ? 12 : 13,
+    lineHeight: isTinyScreen ? 17 : 18,
     fontWeight: '800',
   },
   stageCard: {
-    padding: 16,
+    padding: metric.cardPadding,
   },
   stageHeader: {
     flexDirection: 'row',
@@ -278,15 +279,15 @@ const styles = StyleSheet.create({
   },
   stageTitle: {
     color: colors.primaryText,
-    fontSize: 22,
-    lineHeight: 28,
+    fontSize: isTinyScreen ? 19 : isSmallScreen ? 20 : 22,
+    lineHeight: isTinyScreen ? 24 : isSmallScreen ? 26 : 28,
     fontWeight: '800',
   },
   stageDescription: {
     marginTop: 8,
     color: colors.secondaryText,
-    fontSize: 15,
-    lineHeight: 23,
+    fontSize: isTinyScreen ? 14 : 15,
+    lineHeight: isTinyScreen ? 21 : 23,
   },
   segmentShell: {
     flexDirection: 'row',
@@ -299,7 +300,7 @@ const styles = StyleSheet.create({
   },
   segment: {
     flex: 1,
-    minHeight: 40,
+    minHeight: isTinyScreen ? 34 : 40,
     borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
@@ -314,7 +315,7 @@ const styles = StyleSheet.create({
   },
   segmentText: {
     color: colors.secondaryText,
-    fontSize: 14,
+    fontSize: isTinyScreen ? 13 : 14,
     fontWeight: '800',
   },
   segmentTextActive: {
@@ -322,16 +323,16 @@ const styles = StyleSheet.create({
   },
   emptyCard: {
     alignItems: 'center',
-    padding: 22,
+    padding: isTinyScreen ? 16 : 22,
   },
   emptyImage: {
-    width: 170,
-    height: 190,
+    width: isTinyScreen ? 134 : isSmallScreen ? 152 : 170,
+    height: metric.emptyImageHeight,
     marginBottom: 4,
   },
   emptyTitle: {
     color: colors.primaryText,
-    fontSize: 22,
+    fontSize: isTinyScreen ? 19 : 22,
     fontWeight: '800',
     textAlign: 'center',
   },
@@ -339,8 +340,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 18,
     color: colors.secondaryText,
-    fontSize: 15,
-    lineHeight: 22,
+    fontSize: isTinyScreen ? 14 : 15,
+    lineHeight: isTinyScreen ? 20 : 22,
     textAlign: 'center',
   },
 });

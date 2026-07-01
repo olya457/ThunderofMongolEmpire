@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {colors} from '../theme/colors';
+import {metric} from '../theme/metrics';
 
 type ButtonProps = {
   title: string;
@@ -129,11 +130,11 @@ export const ButtonRow = ({children}: {children: React.ReactNode}) => (
 
 const styles = StyleSheet.create({
   primary: {
-    minHeight: 52,
+    minHeight: metric.primaryButtonHeight,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 18,
+    paddingHorizontal: metric.cardPadding + 2,
     backgroundColor: colors.primaryPurple,
     shadowColor: colors.primaryPurple,
     shadowOpacity: 0.22,
@@ -143,37 +144,37 @@ const styles = StyleSheet.create({
   },
   primaryText: {
     color: colors.card,
-    fontSize: 16,
+    fontSize: metric.bodyFont,
     fontWeight: '800',
   },
   secondary: {
-    minHeight: 48,
+    minHeight: metric.secondaryButtonHeight,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: metric.cardPadding,
     backgroundColor: '#392653',
     borderWidth: 1,
     borderColor: colors.primaryGold,
   },
   secondaryText: {
     color: colors.primaryText,
-    fontSize: 15,
+    fontSize: metric.bodyFont - 1,
     fontWeight: '800',
   },
   ghost: {
-    minHeight: 44,
+    minHeight: metric.ghostButtonHeight,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 14,
+    paddingHorizontal: metric.cardPadding,
   },
   ghostPressed: {
     backgroundColor: '#392653',
   },
   ghostText: {
     color: colors.softGold,
-    fontSize: 15,
+    fontSize: metric.bodyFont - 1,
     fontWeight: '800',
   },
   pressed: {
@@ -184,13 +185,13 @@ const styles = StyleSheet.create({
     opacity: 0.46,
   },
   pill: {
-    minHeight: 38,
+    minHeight: metric.ghostButtonHeight - 4,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 6,
     borderRadius: 999,
-    paddingHorizontal: 12,
+    paddingHorizontal: metric.cardPadding - 2,
     backgroundColor: '#342247',
     borderWidth: 1,
     borderColor: colors.divider,
@@ -200,12 +201,12 @@ const styles = StyleSheet.create({
     borderColor: colors.softGold,
   },
   pillCompact: {
-    width: 38,
+    width: metric.ghostButtonHeight - 4,
     paddingHorizontal: 0,
   },
   pillIcon: {
     color: colors.accentViolet,
-    fontSize: 16,
+    fontSize: metric.bodyFont,
     fontWeight: '900',
   },
   pillIconActive: {
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
   },
   pillText: {
     color: colors.secondaryText,
-    fontSize: 12,
+    fontSize: metric.bodyFont - 4,
     fontWeight: '800',
   },
   pillTextActive: {

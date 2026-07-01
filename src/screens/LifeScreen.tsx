@@ -1,7 +1,13 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {ArtifactCard} from '../components/contentCards';
-import {SectionHeader, SoftBadge, contentBottomPadding} from '../components/layout';
+import {
+  SectionHeader,
+  SoftBadge,
+  contentBottomPadding,
+  screenHorizontalPadding,
+  screenTopPadding,
+} from '../components/layout';
 import {lifeItems} from '../data/lifeItems';
 import {shareEducationalText} from '../utils/share';
 
@@ -26,8 +32,8 @@ export const LifeScreen = () => (
 
 const styles = StyleSheet.create({
   content: {
-    paddingHorizontal: 18,
-    paddingTop: 18,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: screenTopPadding,
     paddingBottom: contentBottomPadding,
   },
 });

@@ -11,9 +11,13 @@ import {
   SectionHeader,
   SoftBadge,
   contentBottomPadding,
+  detailTopPadding,
+  screenHorizontalPadding,
+  screenTopPadding,
 } from '../components/layout';
 import {localStore} from '../storage/localStore';
 import {ButtonRow, FavoriteButton, GhostButton, ShareButton} from '../components/buttons';
+import {isSmallScreen, isTinyScreen, metric} from '../theme/metrics';
 
 type HistoryScreenProps = {
   favoriteArticleIds: string[];
@@ -137,13 +141,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingHorizontal: 18,
-    paddingTop: 18,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: screenTopPadding,
     paddingBottom: contentBottomPadding,
   },
   dailyCard: {
-    padding: 14,
-    marginBottom: 16,
+    padding: metric.cardPadding,
+    marginBottom: isTinyScreen ? 12 : 16,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
@@ -155,20 +159,20 @@ const styles = StyleSheet.create({
   dailyTitle: {
     marginTop: 8,
     color: colors.primaryText,
-    fontSize: 18,
-    lineHeight: 23,
+    fontSize: isTinyScreen ? 16 : 18,
+    lineHeight: isTinyScreen ? 21 : 23,
     fontWeight: '900',
   },
   dailyText: {
     marginTop: 3,
     color: colors.secondaryText,
-    fontSize: 13,
-    lineHeight: 18,
+    fontSize: isTinyScreen ? 12 : 13,
+    lineHeight: isTinyScreen ? 17 : 18,
     fontWeight: '600',
   },
   detailContent: {
-    paddingHorizontal: 18,
-    paddingTop: 14,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: detailTopPadding,
     paddingBottom: contentBottomPadding,
   },
   backButton: {
@@ -190,26 +194,26 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   detailBody: {
-    padding: 18,
+    padding: metric.detailPadding,
   },
   detailTitle: {
     color: colors.primaryText,
-    fontSize: 31,
-    lineHeight: 37,
+    fontSize: isTinyScreen ? 25 : isSmallScreen ? 28 : 31,
+    lineHeight: isTinyScreen ? 30 : isSmallScreen ? 34 : 37,
     fontWeight: '900',
   },
   detailSubtitle: {
     marginTop: 6,
     marginBottom: 14,
     color: colors.warmBronze,
-    fontSize: 15,
-    lineHeight: 21,
+    fontSize: isTinyScreen ? 13 : 15,
+    lineHeight: isTinyScreen ? 19 : 21,
     fontWeight: '800',
   },
   paragraph: {
-    marginTop: 18,
+    marginTop: isTinyScreen ? 14 : 18,
     color: colors.primaryText,
-    fontSize: 16,
-    lineHeight: 26,
+    fontSize: metric.bodyFont,
+    lineHeight: metric.bodyLine,
   },
 });

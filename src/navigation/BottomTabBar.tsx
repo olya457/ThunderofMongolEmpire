@@ -3,6 +3,7 @@ import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {colors} from '../theme/colors';
 import type {TabKey} from '../types/content';
 import {floatingNavBottom} from '../components/layout';
+import {metric} from '../theme/metrics';
 
 const tabs: Array<{key: TabKey; label: string; icon: string}> = [
   {key: 'history', label: 'History', icon: '📖'},
@@ -51,13 +52,13 @@ export const BottomTabBar = ({selectedTab, onSelect}: BottomTabBarProps) => (
 const styles = StyleSheet.create({
   shell: {
     position: 'absolute',
-    left: 14,
-    right: 14,
+    left: metric.navSideInset,
+    right: metric.navSideInset,
     bottom: floatingNavBottom,
-    minHeight: 76,
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-    borderRadius: 24,
+    minHeight: metric.navMinHeight,
+    paddingHorizontal: metric.navHorizontalPadding,
+    paddingVertical: metric.navVerticalPadding,
+    borderRadius: metric.navRadius,
     borderWidth: 1,
     borderColor: '#725197',
     backgroundColor: 'rgba(31, 19, 43, 0.96)',
@@ -74,15 +75,15 @@ const styles = StyleSheet.create({
     minWidth: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 4,
+    gap: metric.navLabelFont < 9 ? 2 : 4,
   },
   pressed: {
     opacity: 0.78,
   },
   iconBubble: {
-    width: 36,
-    height: 34,
-    borderRadius: 18,
+    width: metric.navIconBox,
+    height: metric.navIconBox,
+    borderRadius: metric.navIconBox / 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: colors.mutedText,
-    fontSize: 18,
+    fontSize: metric.navIconFont,
     fontWeight: '800',
   },
   iconActive: {
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: colors.mutedText,
-    fontSize: 10,
+    fontSize: metric.navLabelFont,
     fontWeight: '800',
     maxWidth: '100%',
   },

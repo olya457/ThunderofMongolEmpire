@@ -1,6 +1,6 @@
 export const images = {
   appBackground: require('./background.png'),
-  loaderBackground: require('./tme_reference_loader_full_iphone16_01.jpg'),
+  loaderBackground: require('./tme_loader_silk_steppe_background_01.jpg'),
   brandEmblem: require('./tme_brand_nomad_emblem_ornament_01.png'),
   onboardingDiscovery: require('./tme_onboarding_steppe_discovery_01.png'),
   onboardingArticles: require('./tme_onboarding_scroll_articles_02.png'),

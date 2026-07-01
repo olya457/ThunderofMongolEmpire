@@ -6,7 +6,13 @@ import {
   FavoriteSegmentedControl,
   SiteCard,
 } from '../components/contentCards';
-import {ConfirmationToast, SectionHeader, contentBottomPadding} from '../components/layout';
+import {
+  ConfirmationToast,
+  SectionHeader,
+  contentBottomPadding,
+  screenHorizontalPadding,
+  screenTopPadding,
+} from '../components/layout';
 import {articles} from '../data/articles';
 import {historicalSites} from '../data/sites';
 import {shareEducationalText} from '../utils/share';
@@ -94,8 +100,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingHorizontal: 18,
-    paddingTop: 18,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: screenTopPadding,
     paddingBottom: contentBottomPadding,
   },
 });

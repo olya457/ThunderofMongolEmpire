@@ -6,6 +6,9 @@ import {
   SectionHeader,
   SoftBadge,
   contentBottomPadding,
+  detailTopPadding,
+  screenHorizontalPadding,
+  screenTopPadding,
 } from '../components/layout';
 import {SiteCard} from '../components/contentCards';
 import {historicalSites} from '../data/sites';
@@ -19,6 +22,7 @@ import {
   PrimaryPurpleButton,
   ShareButton,
 } from '../components/buttons';
+import {isSmallScreen, isTinyScreen, metric} from '../theme/metrics';
 
 type SitesScreenProps = {
   favoriteSiteIds: string[];
@@ -116,13 +120,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingHorizontal: 18,
-    paddingTop: 18,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: screenTopPadding,
     paddingBottom: contentBottomPadding,
   },
   detailContent: {
-    paddingHorizontal: 18,
-    paddingTop: 14,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingTop: detailTopPadding,
     paddingBottom: contentBottomPadding,
   },
   backButton: {
@@ -144,29 +148,29 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   detailBody: {
-    padding: 18,
+    padding: metric.detailPadding,
   },
   detailTitle: {
     color: colors.primaryText,
-    fontSize: 30,
-    lineHeight: 36,
+    fontSize: isTinyScreen ? 24 : isSmallScreen ? 27 : 30,
+    lineHeight: isTinyScreen ? 29 : isSmallScreen ? 33 : 36,
     fontWeight: '900',
   },
   coordinates: {
     marginTop: 7,
     marginBottom: 14,
     color: colors.warmBronze,
-    fontSize: 15,
-    lineHeight: 21,
+    fontSize: isTinyScreen ? 13 : 15,
+    lineHeight: isTinyScreen ? 19 : 21,
     fontWeight: '900',
   },
   paragraph: {
-    marginTop: 18,
+    marginTop: isTinyScreen ? 14 : 18,
     color: colors.primaryText,
-    fontSize: 16,
-    lineHeight: 26,
+    fontSize: metric.bodyFont,
+    lineHeight: metric.bodyLine,
   },
   mapButton: {
-    marginTop: 22,
+    marginTop: isTinyScreen ? 16 : 22,
   },
 });

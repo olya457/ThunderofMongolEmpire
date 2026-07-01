@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import MapView, {Marker, Polygon, PROVIDER_DEFAULT, type LatLng} from 'react-native-maps';
 import {colors} from '../theme/colors';
+import {isSmallScreen, isTinyScreen, metric} from '../theme/metrics';
 import type {MapStage} from '../types/content';
 
 type EmpireMapViewProps = {
@@ -228,7 +229,7 @@ export const TimelineSlider = ({stages, index, onChange}: TimelineSliderProps) =
 
 const styles = StyleSheet.create({
   mapShell: {
-    height: 276,
+    height: metric.mapHeight,
     borderRadius: 8,
     overflow: 'hidden',
     borderWidth: 1,
@@ -245,11 +246,11 @@ const styles = StyleSheet.create({
   },
   mapBadge: {
     position: 'absolute',
-    left: 14,
-    top: 14,
+    left: isTinyScreen ? 10 : 14,
+    top: isTinyScreen ? 10 : 14,
     maxWidth: '76%',
-    paddingHorizontal: 13,
-    paddingVertical: 10,
+    paddingHorizontal: isTinyScreen ? 10 : 13,
+    paddingVertical: isTinyScreen ? 8 : 10,
     borderRadius: 8,
     backgroundColor: 'rgba(31, 19, 43, 0.82)',
     borderWidth: 1,
@@ -257,20 +258,20 @@ const styles = StyleSheet.create({
   },
   mapYear: {
     color: colors.softGold,
-    fontSize: 30,
+    fontSize: isTinyScreen ? 24 : isSmallScreen ? 27 : 30,
     fontWeight: '900',
   },
   mapCaption: {
     marginTop: 2,
     color: colors.primaryText,
-    fontSize: 14,
+    fontSize: isTinyScreen ? 12 : 14,
     fontWeight: '800',
   },
   timelineShell: {
     paddingVertical: 10,
   },
   timelineHit: {
-    minHeight: 72,
+    minHeight: isTinyScreen ? 58 : 72,
     justifyContent: 'center',
   },
   timelineTrack: {
@@ -294,13 +295,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   pointWrap: {
-    width: 44,
+    width: isTinyScreen ? 36 : 44,
     alignItems: 'center',
   },
   point: {
-    width: 15,
-    height: 15,
-    borderRadius: 8,
+    width: isTinyScreen ? 12 : 15,
+    height: isTinyScreen ? 12 : 15,
+    borderRadius: isTinyScreen ? 6 : 8,
     backgroundColor: colors.tintedCard,
     borderWidth: 2,
     borderColor: colors.divider,
@@ -310,9 +311,9 @@ const styles = StyleSheet.create({
     borderColor: '#3A2750',
   },
   pointLabel: {
-    marginTop: 9,
+    marginTop: isTinyScreen ? 7 : 9,
     color: colors.mutedText,
-    fontSize: 10,
+    fontSize: isTinyScreen ? 9 : 10,
     fontWeight: '800',
   },
   pointLabelActive: {
