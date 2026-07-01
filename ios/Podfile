@@ -31,5 +31,28 @@ target 'ThunderofMongolEmpire' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    fmt_target = installer.pods_project.targets.find { |target| target.name == 'fmt' }
+    if fmt_target
+      fmt_target.build_configurations.each do |build_config|
+        build_config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+        definitions = build_config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] || ['$(inherited)']
+        definitions = [definitions] if definitions.is_a?(String)
+        definitions << 'FMT_USE_CONSTEVAL=0' unless definitions.include?('FMT_USE_CONSTEVAL=0')
+        build_config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = definitions
+      end
+    end
+
+    fmt_base_header = File.join(installer.sandbox.root.to_s, 'fmt', 'include', 'fmt', 'base.h')
+    if File.exist?(fmt_base_header)
+      fmt_base = File.read(fmt_base_header)
+      patched_fmt_base = fmt_base.gsub('#  define FMT_USE_CONSTEVAL 1', '#  define FMT_USE_CONSTEVAL 0')
+      if patched_fmt_base != fmt_base
+        fmt_base_mode = File.stat(fmt_base_header).mode
+        File.chmod(fmt_base_mode | 0200, fmt_base_header)
+        File.write(fmt_base_header, patched_fmt_base)
+        File.chmod(fmt_base_mode, fmt_base_header)
+      end
+    end
   end
 end
